@@ -4,16 +4,17 @@ namespace Medica.Models
 {
     public class Prescription
     {
-        public string DrFirstName;
-        public string DrLastName;
-        public string PatientFirstName;
-        public string PatientLastName;
-        public string DiseaseDiscription;
-        public string MedicinName;
-        public DateTime StartDate;
-        public DateTime EndDate;
-        public int PillsPerDay;
-        public string Instructions;
+        public int PrescriptionID { get; set; }
+        public string DrFirstName { get; set; }
+        public string DrLastName { get; set; }
+        public string PatientFirstName { get; set; }
+        public string PatientLastName { get; set; }
+        public string DiseaseDiscription { get; set; }
+        public string MedicinName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int PillsPerDay { get; set; }
+        public string Instructions { get; set; }
 
 
 
