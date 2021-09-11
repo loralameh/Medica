@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Medica.Models;
 
 namespace Medica.Data
 {
@@ -12,5 +13,8 @@ namespace Medica.Data
             : base(options)
         {
         }
+
+        public DbSet<Prescription> Prescriptions { get; set; }
+
     }
 }
