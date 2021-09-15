@@ -7,7 +7,7 @@ using Medica.Models;
 
 namespace Medica.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext <ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -15,6 +15,7 @@ namespace Medica.Data
         }
 
         public DbSet<Prescription> Prescriptions { get; set; }
+
 
     }
 }
