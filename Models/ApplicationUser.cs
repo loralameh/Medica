@@ -10,7 +10,6 @@ namespace Medica.Models
         public string LastName{ get; set; }
         public int DoctorId { get; set; }
         public bool AreUDoctor { get; set; }
-        public bool AreUPatient{ get; set; }
         public string DoctorSpeciality { get; set; }
     }
 }
