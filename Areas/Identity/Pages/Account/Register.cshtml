@@ -1,6 +1,7 @@
 
 @page
 @model RegisterModel
+
 @{
     ViewData["Title"] = "Register";
 }
@@ -41,15 +42,20 @@
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
 
-            <div class="form-group">  
-                <label asp-for="AreUDoctor" ></label>
-                <input type="checkbox" id="chkDoctor" value="true" /> 
-           </div>
+            <div class="form-group">
+                <label asp-for="Input.AreUDoctor"></label>
+                <input asp-for="Input.AreUDoctor"  class="form-control" />
+            </div>                
+
+
            
-            <div id="DoctorOnly" class="form-group">
+            <div  class="form-group">
                 <label asp-for="Input.DoctorId"></label>
                 <input asp-for="Input.DoctorId" class="form-control"  />
+            </div>
 
+
+            <div  class="form-group">
                 <label asp-for="Input.DoctorSpeciality"></label>
                 <input asp-for="Input.DoctorSpeciality" class="form-control" />
             </div>

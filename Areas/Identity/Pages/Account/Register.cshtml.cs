@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using System.IO;
+
 
 namespace Medica.Areas.Identity.Pages.Account
 {
@@ -72,20 +72,24 @@ namespace Medica.Areas.Identity.Pages.Account
             [Display(Name = "Medical ID number")]
             public int DoctorId { get; set; }
 
-            [Display(Name = "I am a Doctor.")]
-            public bool AreUDoctor { get; set; }
+            [Display(Name = "I am a Doctor:")]
+            public char AreUDoctor { get; set; }
 
             [Display(Name = "Medical Field Specialty")]
             public string DoctorSpeciality { get; set; }
 
+            
+
 
         }
+
 
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
+
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
