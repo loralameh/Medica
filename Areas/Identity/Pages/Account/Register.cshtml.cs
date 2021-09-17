@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using System.IO;
 
 namespace Medica.Areas.Identity.Pages.Account
 {
@@ -70,8 +71,9 @@ namespace Medica.Areas.Identity.Pages.Account
 
             [Display(Name = "Medical ID number")]
             public int DoctorId { get; set; }
+
+            [Display(Name = "I am a Doctor.")]
             public bool AreUDoctor { get; set; }
-            public bool AreUPatient{ get; set; }
 
             [Display(Name = "Medical Field Specialty")]
             public string DoctorSpeciality { get; set; }
@@ -89,10 +91,23 @@ namespace Medica.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                
+                var user = new ApplicationUser 
+                { UserName = Input.FirstName + Input.LastName,
+                 Email = Input.Email,
+                 DoctorSpeciality=Input.DoctorSpeciality,
+                 DoctorId=Input.DoctorId,
+                 AreUDoctor=Input.AreUDoctor,
+                 FirstName=Input.FirstName,
+                 LastName=Input.LastName
+
+                 };
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
@@ -102,7 +117,12 @@ namespace Medica.Areas.Identity.Pages.Account
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
-                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
+                            values: new 
+                                { area = "Identity",
+                                userId = user.Id,
+                                code = code,
+                                returnUrl = returnUrl
+                                },
                         protocol: Request.Scheme);
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
@@ -122,6 +142,8 @@ namespace Medica.Areas.Identity.Pages.Account
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
+
+                
             }
 
             // If we got this far, something failed, redisplay form
