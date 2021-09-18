@@ -15,6 +15,8 @@ namespace Medica.Data
         }
 
         public DbSet<Prescription> Prescriptions { get; set; }
+        public DbSet<Models.DoctorUser> DoctorUsers { get; set; }
+
 
 
     }

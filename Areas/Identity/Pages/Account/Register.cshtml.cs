@@ -69,15 +69,11 @@ namespace Medica.Areas.Identity.Pages.Account
             [Display(Name = "Last Name")]
             public string LastName{ get; set; }
 
-            [Display(Name = "Medical ID number")]
-            public int DoctorId { get; set; }
-
+            
             [Display(Name = "I am a Doctor:")]
             public char AreUDoctor { get; set; }
 
-            [Display(Name = "Medical Field Specialty")]
-            public string DoctorSpeciality { get; set; }
-
+            
             
 
 
@@ -102,8 +98,6 @@ namespace Medica.Areas.Identity.Pages.Account
                 var user = new ApplicationUser 
                 { UserName = Input.FirstName + Input.LastName,
                  Email = Input.Email,
-                 DoctorSpeciality=Input.DoctorSpeciality,
-                 DoctorId=Input.DoctorId,
                  AreUDoctor=Input.AreUDoctor,
                  FirstName=Input.FirstName,
                  LastName=Input.LastName
