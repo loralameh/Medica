@@ -15,7 +15,7 @@ namespace Medica.Data
         }
 
         public DbSet<Prescription> Prescriptions { get; set; }
-     
+    
     
     }
 }
