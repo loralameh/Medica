@@ -16,7 +16,7 @@ namespace Medica.Models
         public int PillsPerDay { get; set; }
         public string Instructions { get; set; }
 
-
+   
 
     }
 }
