@@ -100,7 +100,7 @@ namespace Medica.Areas.Identity.Pages.Account
             {
                 
                 var user = new ApplicationUser 
-                { UserName = Input.FirstName + Input.LastName,
+                { UserName = Input.Email,
                  Email = Input.Email,
                  DoctorSpeciality=Input.DoctorSpeciality,
                  DoctorId=Input.DoctorId,
